@@ -1,36 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.FirstApp.AppBarOverlay">
+    <TextView
+        android:id="@+id/txtview"
+        android:layout_width="63dp"
+        android:layout_height="39dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:paddingLeft="5dp"
+        android:rotationX="0"
+        android:text="Hello!"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="174dp"
+        tools:layout_editor_absoluteY="0dp" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+    <LinearLayout
+        android:layout_width="401dp"
+        android:layout_height="219dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtview"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="1dp">
+
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.FirstApp.PopupOverlay" />
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            app:srcCompat="@drawable/download" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:ems="10"
+            android:hint="Enter text"
+            android:inputType="textPersonName" />
 
-    <include
-        layout="@layout/content_main"
-        android:layout_width="match_parent"
-        android:layout_height="235dp" />
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="212dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:insetLeft="30dp"
+            android:insetTop="10dp"
+            android:insetRight="30dp"
+            android:insetBottom="10dp"
+            android:text="Show Toast" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="212dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:insetLeft="30dp"
+            android:insetTop="10dp"
+            android:insetRight="30dp"
+            android:insetBottom="10dp"
+            android:text="Next Page"
+            app:backgroundTint="#2196F3" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
