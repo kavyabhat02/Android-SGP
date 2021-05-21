@@ -4,70 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/txtview"
-        android:layout_width="63dp"
-        android:layout_height="39dp"
-        android:layout_weight="1"
-        android:padding="10dp"
-        android:paddingLeft="5dp"
-        android:rotationX="0"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Hello!"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="174dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
 
     <LinearLayout
-        android:layout_width="401dp"
-        android:layout_height="219dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtview"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="1dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.029">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight="2"
+            android:layout_height="wrap_content"
             app:srcCompat="@drawable/download" />
 
         <EditText
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:ems="10"
             android:hint="Enter text"
-            android:inputType="textPersonName" />
+            android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="212dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:insetLeft="30dp"
-            android:insetTop="10dp"
-            android:insetRight="30dp"
-            android:insetBottom="10dp"
-            android:text="Show Toast" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="212dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:insetLeft="30dp"
-            android:insetTop="10dp"
-            android:insetRight="30dp"
-            android:insetBottom="10dp"
-            android:text="Next Page"
-            app:backgroundTint="#2196F3" />
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetLeft="10dp"
+                android:insetTop="10dp"
+                android:insetRight="10dp"
+                android:insetBottom="10dp"
+                android:text="SHOW TOAST" />
 
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetLeft="10dp"
+                android:insetTop="10dp"
+                android:insetRight="10dp"
+                android:insetBottom="10dp"
+                android:text="NEXT PAGE" />
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

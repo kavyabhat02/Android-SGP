@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="#FFFFFF">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_margin="5dp"
         app:cardCornerRadius="15dp"
-        android:layout_margin="5dp">
+        android:elevation="10dp">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -19,36 +21,31 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageView"
-                    android:layout_width="match_parent"
+                    android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_weight="2"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/sunrise" />
+                    android:layout_margin="10dp"/>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
 
                     <TextView
-                        android:id="@+id/describe"
+                        android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="Sunrises around the world"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"/>
 
-                    <Button
-                        android:id="@+id/button3"
-                        android:layout_width="200dp"
+                    <TextView
+                        android:id="@+id/mobile"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Click to view more" />
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
