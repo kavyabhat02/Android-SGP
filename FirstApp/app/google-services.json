@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "722544737706",
+    "project_id": "android-sgp",
+    "storage_bucket": "android-sgp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722544737706:android:76bf87279aabe4e4103fd3",
+        "android_client_info": {
+          "package_name": "com.example.firstapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722544737706-5rpi7fvmgj8fkcq13625buuetd6knf3q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA55nCRfMG_JwjqtCuDk0SrTvtmOwLMsH0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "722544737706-5rpi7fvmgj8fkcq13625buuetd6knf3q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

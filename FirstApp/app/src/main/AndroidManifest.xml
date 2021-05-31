@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstApp">
         <activity android:name=".SecondActivity"></activity>
+        <activity android:name=".BookList"></activity>
+        <activity android:name=".GameList"></activity>
+        <activity android:name=".ArtList"></activity>
+        <activity android:name=".CartActivity"></activity>
+        <activity android:name=".SignupActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

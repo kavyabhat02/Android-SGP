@@ -1,16 +1,21 @@
 package com.example.firstapp;
 
+import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SecondActivity extends AppCompatActivity
 {
-    List<DataClass> list = new ArrayList<>();
+    private FirebaseAuth.AuthStateListener authStateListener;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -18,14 +23,107 @@ public class SecondActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        list.add(new DataClass("Kavya", "121212", R.drawable.p1));
-        list.add(new DataClass("ABC", "343434", R.drawable.p2));
-        list.add(new DataClass("PQR", "565656", R.drawable.p3));
-        list.add(new DataClass("XYZ", "787878", R.drawable.p4));
+        Button b1, b2, b3, b4, logout;
+        TextView welcome;
 
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(list);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        b1 = findViewById(R.id.button1);
+        b2 = findViewById(R.id.button2);
+        b3 = findViewById(R.id.button3);
+        b4 = findViewById(R.id.button4);
+
+        logout = findViewById(R.id.logout);
+        welcome = findViewById(R.id.welcome);
+
+        auth = FirebaseAuth.getInstance();
+        final FirebaseUser user = auth.getCurrentUser();
+
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                if(user == null)
+                {
+                    startActivity(new Intent(SecondActivity.this, LoginActivity.class));
+                    finish();
+                }
+            }
+        };
+
+        String welcomeMessage = "Welcome, \n"+user.getEmail()+"!";
+        welcome.setText(welcomeMessage);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+                startActivity(new Intent(SecondActivity.this, MainActivity.class));
+            }
+        });
+
+        b1.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                openActivityA();
+            }
+        });
+
+        b2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                openActivityB();
+            }
+        });
+
+        b3.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                openActivityC();
+            }
+        });
+
+        b4.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                openActivityD();
+            }
+        });
+    }
+
+    public void openActivityA()
+    {
+        Intent intent = new Intent(this, BookList.class);
+        startActivity(intent);
+    }
+
+    public void openActivityB()
+    {
+        Intent intent = new Intent(this, GameList.class);
+        startActivity(intent);
+    }
+
+    public void openActivityC()
+    {
+        Intent intent = new Intent(this, ArtList.class);
+        startActivity(intent);
+    }
+
+    public void openActivityD()
+    {
+        Intent intent = new Intent(this, CartActivity.class);
+        startActivity(intent);
+    }
+
+    public void logout()
+    {
+        auth.signOut();
     }
 }

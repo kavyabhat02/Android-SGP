@@ -1,5 +1,6 @@
 package com.example.firstapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,48 +10,73 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity
 {
-    private Button b1;
-    private Button b2;
-    private EditText et1;
-    private String toast = "Test";
+    private Button signup;
+    private Button login;
+
+    private FirebaseAuth.AuthStateListener authStateListener;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        b1 = findViewById(R.id.button1);
-        et1 = findViewById(R.id.name);
-        b2 = findViewById(R.id.button2);
 
-        b1.setOnClickListener(new View.OnClickListener()
+        setValues();
+
+        signup = findViewById(R.id.signup);
+        login = findViewById(R.id.login);
+
+        auth = FirebaseAuth.getInstance();
+        final FirebaseUser user = auth.getCurrentUser();
+
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if(user == null)
+                {
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                    finish();
+                }
+            }
+        };
+
+        signup.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                if(!et1.getText().toString().matches(""))
-                {
-                    toast = et1.getText().toString();
-                }
-                Toast.makeText(MainActivity.this, toast, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+                startActivity(intent);
             }
         });
 
-        b2.setOnClickListener(new View.OnClickListener()
+        login.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                openNewActivity();
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }
 
-    public void openNewActivity()
+    public void setValues()
     {
-        Intent intent = new Intent(this, SecondActivity.class);
-        startActivity(intent);
+        BookList bl = new BookList();
+        bl.setList();
+
+        GameList gl = new GameList();
+        gl.setList();
+
+        ArtList al = new ArtList();
+        al.setList();
     }
 }

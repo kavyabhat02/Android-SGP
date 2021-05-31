@@ -1,23 +1,31 @@
 package com.example.firstapp;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>
 {
-    private List<DataClass> list;
-
-    RecyclerViewAdapter(List<DataClass> myList)
+    private static List<DataClass> list;
+    private OnItemClickListener clickListener;
+    RecyclerViewAdapter(List<DataClass> myList, OnItemClickListener myListener)
     {
         list = myList;
+        this.clickListener = myListener;
     }
 
     @NonNull
@@ -32,8 +40,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, int position)
     {
         DataClass data = list.get(position);
+        char ch = 8377;
         holder.name.setText(data.name);
-        holder.mobile.setText(data.mob);
+        holder.cost.setText(ch+" "+Integer.toString(data.cost));
         holder.imageView.setBackgroundResource(data.img_name);
     }
 
@@ -43,18 +52,32 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return list.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder
+    public class ViewHolder extends RecyclerView.ViewHolder
     {
         TextView name;
-        TextView mobile;
+        TextView cost;
         ImageView imageView;
+        Button cart;
 
         public ViewHolder(@NonNull View itemView)
         {
             super(itemView);
             name = itemView.findViewById(R.id.name);
-            mobile = itemView.findViewById(R.id.mobile);
+            cost = itemView.findViewById(R.id.cost);
             imageView = itemView.findViewById(R.id.imageView);
+            cart = itemView.findViewById(R.id.toCart);
+
+            cart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickListener.addToCart(list.get(getAdapterPosition()));
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener
+    {
+        void addToCart(DataClass data);
     }
 }
