@@ -55,5 +55,5 @@
             android:insetBottom="10dp"
             android:text="Sign Up"
             android:textSize="40sp" />
-</LinearLayout>
     </LinearLayout>
+</LinearLayout>

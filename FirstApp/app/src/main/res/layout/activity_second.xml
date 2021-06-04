@@ -33,29 +33,31 @@
                 android:fontFamily="@font/marker"/>
 
             <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center"
-            android:layout_margin="10dp"
-            android:id="@+id/logout"
-            android:text="logout"
-            android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center"
+                android:layout_margin="10dp"
+                android:id="@+id/logout"
+                android:text="logout"
+                android:textColor="@color/white"
                 android:textSize="25sp"
                 android:fontFamily="@font/marker"
-            android:background="#008000"/>
+                android:background="#008000"/>
+
         </LinearLayout>
 
         <Button
-                android:id="@+id/button1"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:background="@drawable/back1"
-                android:text="BOOKS"
-                android:textSize="50sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/marker"/>
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:background="@drawable/back1"
+            android:text="BOOKS"
+            android:textSize="50sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/marker"/>
+
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
@@ -96,6 +98,6 @@
             android:text="Proceed to Cart"
             android:textSize="20sp"
             android:textColor="@color/white" />
-    </LinearLayout>>
 
+    </LinearLayout>>
 </LinearLayout>

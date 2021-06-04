@@ -1,28 +1,19 @@
 package com.example.firstapp;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Method;
 import java.util.List;
 
-public class CartRVAdapter extends RecyclerView.Adapter<CartRVAdapter.ViewHolder>
-{
+public class CartRVAdapter extends RecyclerView.Adapter<CartRVAdapter.ViewHolder> {
     private List<DataClass> list;
     private List<Integer> quantity;
 
@@ -30,8 +21,7 @@ public class CartRVAdapter extends RecyclerView.Adapter<CartRVAdapter.ViewHolder
     static int totalCost;
     static int counter;
 
-    CartRVAdapter(List<DataClass> myList, List<Integer> myQuantity, int tcount, int cost, OnClickListener myListener)
-    {
+    CartRVAdapter(List<DataClass> myList, List<Integer> myQuantity, int tcount, int cost, OnClickListener myListener) {
         list = myList;
         quantity = myQuantity;
         counter = tcount;
@@ -41,8 +31,7 @@ public class CartRVAdapter extends RecyclerView.Adapter<CartRVAdapter.ViewHolder
 
     @NonNull
     @Override
-    public CartRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
-    {
+    public CartRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         if(viewType == R.layout.texts)
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.texts, parent, false);
@@ -52,11 +41,9 @@ public class CartRVAdapter extends RecyclerView.Adapter<CartRVAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CartRVAdapter.ViewHolder holder, int position)
-    {
+    public void onBindViewHolder(@NonNull CartRVAdapter.ViewHolder holder, int position) {
         char ch = 8377;
-        if(position == list.size())
-        {
+        if(position == list.size()) {
             if(totalCost>=0) {
                 holder.total.setText(ch+ Integer.toString(totalCost));
                 if(counter!=1)
@@ -82,16 +69,14 @@ public class CartRVAdapter extends RecyclerView.Adapter<CartRVAdapter.ViewHolder
     }
 
     @Override
-    public int getItemViewType(int position)
-    {
+    public int getItemViewType(int position) {
         if(position == list.size())
             return R.layout.texts;
         else
             return R.layout.cartcard;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder
-    {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         TextView cost;
         TextView number;
@@ -101,8 +86,7 @@ public class CartRVAdapter extends RecyclerView.Adapter<CartRVAdapter.ViewHolder
         TextView total;
         TextView text;
 
-        public ViewHolder(@NonNull View itemView)
-        {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             cost = itemView.findViewById(R.id.cost);
@@ -115,13 +99,10 @@ public class CartRVAdapter extends RecyclerView.Adapter<CartRVAdapter.ViewHolder
             total = itemView.findViewById(R.id.total);
             text = itemView.findViewById(R.id.text);
 
-            if(itemView.findViewById(R.id.trash) != null)
-            {
-                trash.setOnClickListener(new View.OnClickListener()
-                {
+            if(itemView.findViewById(R.id.trash) != null) {
+                trash.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         DataClass data = list.get(getAdapterPosition());
 
                         totalCost -= (list.get(getAdapterPosition()).cost * quantity.get(getAdapterPosition()));
@@ -158,8 +139,7 @@ public class CartRVAdapter extends RecyclerView.Adapter<CartRVAdapter.ViewHolder
         }
     }
 
-    public interface OnClickListener
-    {
+    public interface OnClickListener {
         void addOrder(DataClass data);
         void reduceItems(DataClass data);
         void deleteFromCart(DataClass data);

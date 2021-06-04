@@ -11,13 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookList extends AppCompatActivity implements RecyclerViewAdapter.OnItemClickListener
-{
+public class BookList extends AppCompatActivity implements RecyclerViewAdapter.OnItemClickListener {
     static List<DataClass> list = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lists);
 
@@ -29,8 +27,7 @@ public class BookList extends AppCompatActivity implements RecyclerViewAdapter.O
         recyclerView.setLayoutManager(mLayoutManager);
     }
 
-    public void setList()
-    {
+    public void setList() {
         list.add(new DataClass("The Lord of the Rings - Book 1", 500, R.drawable.book_p1));
         list.add(new DataClass("The Lord of the Rings - Book 2", 500, R.drawable.book_p2));
         list.add(new DataClass("The Lord of the Rings - Book 3", 500, R.drawable.book_p3));
@@ -40,8 +37,7 @@ public class BookList extends AppCompatActivity implements RecyclerViewAdapter.O
     }
 
     @Override
-    public void addToCart(DataClass data)
-    {
+    public void addToCart(DataClass data) {
         int position = list.indexOf(data);
         Toast.makeText(this, "Added to Cart", Toast.LENGTH_SHORT).show();
         list.set(position, data);

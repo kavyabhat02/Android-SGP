@@ -10,8 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameList extends AppCompatActivity implements RecyclerViewAdapter.OnItemClickListener
-{
+public class GameList extends AppCompatActivity implements RecyclerViewAdapter.OnItemClickListener {
     static List<DataClass> list = new ArrayList<>();
 
     @Override
@@ -27,8 +26,7 @@ public class GameList extends AppCompatActivity implements RecyclerViewAdapter.O
         recyclerView.setLayoutManager(mLayoutManager);
     }
 
-    public void setList()
-    {
+    public void setList() {
         list.add(new DataClass("Monopoly", 800, R.drawable.game1));
         list.add(new DataClass("Scrabble", 900, R.drawable.game2));
         list.add(new DataClass("The Game of Life", 1000, R.drawable.game3));
@@ -38,8 +36,7 @@ public class GameList extends AppCompatActivity implements RecyclerViewAdapter.O
     }
 
     @Override
-    public void addToCart(DataClass data)
-    {
+    public void addToCart(DataClass data) {
         int position = list.indexOf(data);
         Toast.makeText(this, "Added to Cart", Toast.LENGTH_SHORT).show();
         list.set(position, data);

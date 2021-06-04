@@ -12,14 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SecondActivity extends AppCompatActivity
-{
+public class SecondActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseAuth auth;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
@@ -42,8 +40,7 @@ public class SecondActivity extends AppCompatActivity
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                if(user == null)
-                {
+                if(user == null) {
                     startActivity(new Intent(SecondActivity.this, LoginActivity.class));
                     finish();
                 }
@@ -61,8 +58,7 @@ public class SecondActivity extends AppCompatActivity
             }
         });
 
-        b1.setOnClickListener(new View.OnClickListener()
-        {
+        b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -70,8 +66,7 @@ public class SecondActivity extends AppCompatActivity
             }
         });
 
-        b2.setOnClickListener(new View.OnClickListener()
-        {
+        b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -79,8 +74,7 @@ public class SecondActivity extends AppCompatActivity
             }
         });
 
-        b3.setOnClickListener(new View.OnClickListener()
-        {
+        b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -88,8 +82,7 @@ public class SecondActivity extends AppCompatActivity
             }
         });
 
-        b4.setOnClickListener(new View.OnClickListener()
-        {
+        b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -98,26 +91,22 @@ public class SecondActivity extends AppCompatActivity
         });
     }
 
-    public void openActivityA()
-    {
+    public void openActivityA() {
         Intent intent = new Intent(this, BookList.class);
         startActivity(intent);
     }
 
-    public void openActivityB()
-    {
+    public void openActivityB() {
         Intent intent = new Intent(this, GameList.class);
         startActivity(intent);
     }
 
-    public void openActivityC()
-    {
+    public void openActivityC() {
         Intent intent = new Intent(this, ArtList.class);
         startActivity(intent);
     }
 
-    public void openActivityD()
-    {
+    public void openActivityD() {
         Intent intent = new Intent(this, CartActivity.class);
         startActivity(intent);
     }

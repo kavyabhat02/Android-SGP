@@ -16,15 +16,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class SignupActivity extends AppCompatActivity
-{
+public class SignupActivity extends AppCompatActivity {
     private EditText email, password;
     private FirebaseAuth auth;
     private Button login, signup;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
@@ -49,32 +47,27 @@ public class SignupActivity extends AppCompatActivity
                 String inputEmail = email.getText().toString();
                 String inputPassword = password.getText().toString();
 
-                if(TextUtils.isEmpty(inputEmail))
-                {
+                if(TextUtils.isEmpty(inputEmail)) {
                     Toast.makeText(SignupActivity.this, "Enter email!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(TextUtils.isEmpty(inputPassword))
-                {
+                if(TextUtils.isEmpty(inputPassword)) {
                     Toast.makeText(SignupActivity.this, "Enter password!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if(inputPassword.length()<6)
-                {
+                if(inputPassword.length()<6) {
                     Toast.makeText(SignupActivity.this, "Password needs to be at least 6 characters!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 auth.createUserWithEmailAndPassword(inputEmail, inputPassword)
                         .addOnCompleteListener(SignupActivity.this, task -> {
-                           if(!task.isSuccessful())
-                           {
+                           if(!task.isSuccessful()) {
                                Toast.makeText(SignupActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                            }
-                           else
-                           {
+                           else {
                                startActivity(new Intent(SignupActivity.this, SecondActivity.class));
                                finish();
                            }

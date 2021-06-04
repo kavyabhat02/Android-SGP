@@ -18,27 +18,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.lang.reflect.Method;
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>
-{
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private static List<DataClass> list;
     private OnItemClickListener clickListener;
-    RecyclerViewAdapter(List<DataClass> myList, OnItemClickListener myListener)
-    {
+    RecyclerViewAdapter(List<DataClass> myList, OnItemClickListener myListener) {
         list = myList;
         this.clickListener = myListener;
     }
 
     @NonNull
     @Override
-    public RecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
-    {
+    public RecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, int position)
-    {
+    public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, int position) {
         DataClass data = list.get(position);
         char ch = 8377;
         holder.name.setText(data.name);
@@ -52,15 +48,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder
-    {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         TextView cost;
         ImageView imageView;
         Button cart;
 
-        public ViewHolder(@NonNull View itemView)
-        {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             cost = itemView.findViewById(R.id.cost);
@@ -76,8 +70,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    public interface OnItemClickListener
-    {
+    public interface OnItemClickListener {
         void addToCart(DataClass data);
     }
 }
